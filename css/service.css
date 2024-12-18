@@ -1,0 +1,394 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensures footer stays at the bottom */
+    background-color: white;
+}
+
+header {
+    background: #fff; /* White background for the navbar */
+    color: #000; /* Text color for navbar */
+    position: sticky; /* Make the navbar sticky */
+    top: 0; /* Stick to the top */
+    z-index: 1000; /* Ensure it stays on top of other elements */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center; /* Vertically center the logo and text */
+}
+
+.logo-image {
+    width: 70px; /* Adjust the size of your logo */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 10px; /* Add space between the logo and text */
+}
+
+.text-logo {
+    font-size: 24px; /* Adjust the size of the text */
+    color: #333; /* Change the color if needed */
+    font-weight: bold; /* Make the text stand out */
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    transition: all 0.3s ease;
+}
+
+.nav-links li {
+    position: relative;
+    margin-left: 20px;
+}
+
+.nav-links a {
+    color: black; /* Link color */
+    text-decoration: none;
+    padding: 5px 10px; /* Increased padding for better spacing */
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #ffcc00; /* Change hover color */
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    height: 2px;
+    width: 100%;
+    background: #ffcc00; /* Underline color */
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    transform: scaleX(1);
+}
+
+.hamburger {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: black; /* Hamburger icon color */
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #fff; /* White background for the footer */
+    color: #000; /* Text color for footer */
+    margin-top: auto; /* Ensures footer is sticky at the bottom */
+}
+
+.social-icons {
+    margin-top: 10px; /* Space between text and icons */
+}
+
+.social-icons a {
+    color: black; /* Icon color */
+    margin: 0 10px; /* Space between icons */
+    font-size: 16px; /* Reduced icon size */
+    transition: color 0.3s ease;
+    text-decoration: none; /* Remove the dash */
+}
+
+.social-icons a:hover {
+    color: #ffcc00; /* Change icon color on hover */
+}
+
+.social-icons {
+    margin-top: 10px; /* Space between text and icons */
+    position: relative;
+    z-index: 10; /* Ensure links are on top */
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 95px;
+        left: 0; /* Aligns the menu to the left */
+        right: 0; /* Full width */
+        background: #fff; /* White background for dropdown */
+        width: 100%; /* Full width */
+        padding: 10px 0; /* Padding for better spacing */
+    }
+
+    .nav-links li {
+        margin: 10px 0; /* Space between links */
+        text-align: center; /* Center text */
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: block;
+        color: black; /* Hamburger button color */
+    }
+}
+
+.gallery {
+    display: flex; /* Change to flexbox */
+    flex-wrap: wrap; /* Allow items to wrap */
+    gap: 15px; /* Space between images */
+    padding: 20px; /* Padding around the gallery */
+}
+
+.gallery-item {
+    flex: 1 1 200px; /* Allow items to grow/shrink */
+    overflow: hidden;
+    border-radius: 10px; /* Rounded corners for images */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease; /* Smooth zoom on hover */
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+/* Media queries for smaller screens */
+@media (max-width: 768px) {
+    .gallery {
+        width: 50%
+        flex-direction: column; /* Stack images vertically on small screens */
+    }
+}
+
+.donation-container {
+    position: relative; /* Allows absolute positioning of children */
+    text-align: center; /* Center-align text */
+}
+
+.donation {
+    position: absolute; /* Position the donation section absolutely */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust to center */
+    padding: 20px; /* Add padding for button spacing */
+    opacity: 0; /* Start with hidden text */
+    font-size: 2rem; /* Make the text larger */
+    color: #fff; /* Text color changed to white */
+    text-align: center; /* Center-align text */
+    transition: opacity 1s ease; /* Smooth transition for opacity */
+}
+
+.donate-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: 2px solid #000; /* Black border */
+    background-color: white; /* White background */
+    color: #000; /* Text color */
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+    border-radius: 5px; /* Rounded corners */
+    margin-top: 20px; /* Space between text and button */
+}
+
+.donate-button:hover {
+    background-color: transparent; /* Transparent background on hover */
+    color: #000; /* Change text color on hover */
+}
+
+.partner-column {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center-align items */
+    padding: 20px;
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin: 22px; /* Margin around the column */
+}
+
+.partner-item {
+    display: flex;
+    align-items: center; /* Center items vertically */
+    margin: 15px 0; /* Space between items */
+    opacity: 0; /* Start invisible for animation */
+    transform: translateY(20px); /* Start slightly below */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
+}
+
+.partner-item i {
+    font-size: 24px; /* Icon size */
+    margin-right: 10px; /* Space between icon and text */
+    color: #4CAF50; /* Icon color */
+}
+
+.partner-item span {
+    font-size: 18px; /* Text size */
+    color: #333; /* Text color */
+}
+
+/* Animation to show items */
+.partner-item.show {
+    opacity: 1; /* Make visible */
+    transform: translateY(0); /* Move to original position */
+}
+
+.support-column {
+    background-color: white; /* White column background */
+    padding: 20px; /* Space inside the column */
+    margin: 20px 0; /* Space above and below the column */
+    text-align: left; /* Center align text */
+    line-height: 1.6;
+    font-size: 14px; /* Adjust based on preference */
+    font-family: 'Roboto', sans-serif;
+}
+
+.support-column h2 {
+    text-align: center;
+    font-size: 24px; /* Adjust based on preference */
+    font-family: 'Roboto', sans-serif;
+}
+
+.support-column h3 {
+    text-align: center;
+    font-size: 24px; /* Adjust based on preference */
+    font-family: 'Roboto', sans-serif;
+}
+
+.support-column p {
+    font-size: 14px; /* Adjust based on preference */
+    font-family: 'Roboto', sans-serif;
+}
+
+.animated-image {
+    width: 100%; /* Adjust size as needed */
+    height: auto; /* Maintain aspect ratio */
+    opacity: 0; /* Start hidden */
+    transform: translateY(20px); /* Start slightly below */
+    transition: opacity 0.6s ease, transform 0.6s ease; /* Animation effect */
+    visibility: hidden; /* Keep the image hidden */
+    margin-top: 1%;
+}
+
+.show {
+    opacity: 1; /* Fully visible */
+    transform: translateY(0); /* Move to original position */
+    visibility: visible; /* Ensure the image is visible */
+}
+
+.children-future-column {
+    position: sticky; /* Keeps the column visible until scrolled */
+    top: 0; /* Ensures it sticks at the top when scrolling */
+    background-color: white; /* Background color */
+    padding: 20px; /* Adds padding for spacing */
+    margin: 20px 0; /* Margin for spacing from other elements */
+    border-radius: 8px; /* Optional: rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: subtle shadow for depth */
+    font-size: 14px; /* Adjust based on preference */
+    font-family: 'Roboto', sans-serif;
+}
+
+.children-future-column h2 {
+    margin: 0 0 10px; /* Adjusts spacing below the heading */
+    font-size: 24px; /* Sets a larger font size */
+    text-align: center;
+}
+
+.children-future-column p {
+    font-size: 14px; /* Sets a standard font size */
+    line-height: 1.6; /* Increases line height for readability */
+    font-family: 'Roboto', sans-serif;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between; /* Space between buttons */
+    padding: 20px; /* Padding around the container */
+    position: fixed; /* Fixed positioning */
+    bottom: 20px; /* Distance from the bottom */
+    left: 0;
+    right: 0;
+}
+
+.action-button {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    border: none; /* Remove border */
+    padding: 15px 20px; /* Padding */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Font size */
+    display: flex; /* Flexbox for icon and text */
+    align-items: center; /* Center vertically */
+}
+
+.action-button i {
+    margin-right: 8px; /* Space between icon and text */
+}
+
+/* Change color on hover */
+.action-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+@media (max-width: 480px) {
+    .donation h2 {
+        font-size: 30px; /* Smaller font size for mobile */
+    }
+
+      .support-column h2 {
+    text-align: center;
+    font-size: 16px;
+}
+
+
+.support-column h3 {
+    text-align: center;
+    font-size: 16px;
+}
+}
+
+@media (max-width: 540px) {
+    .donation h2 {
+        font-size: 20px; /* Smaller font size for mobile */
+        margin-top: -90%;
+    }
+}
+
+@media (min-width: 344px) and (max-width: 375px) {
+    .donation h2 {
+        font-size: 30px; /* Smaller font size for mobile */
+    }
+
+    .support-column h2 {
+    text-align: center;
+    font-size: 16px;
+}
+
+
+.support-column h3 {
+    text-align: center;
+    font-size: 16px;
+}
+
+.support-column p {
+    text-align: center;
+}

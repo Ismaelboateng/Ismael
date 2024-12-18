@@ -1,0 +1,510 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensures footer stays at the bottom */
+    background-color: white;
+}
+
+header {
+    background: #fff; /* White background for the navbar */
+    color: #000; /* Text color for navbar */
+    position: sticky; /* Make the navbar sticky */
+    top: 0; /* Stick to the top */
+    z-index: 1000; /* Ensure it stays on top of other elements */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center; /* Vertically center the logo and text */
+}
+
+.logo-image {
+    width: 70px; /* Adjust the size of your logo */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 10px; /* Add space between the logo and text */
+}
+
+.text-logo {
+    font-size: 24px; /* Adjust the size of the text */
+    color: #333; /* Change the color if needed */
+    font-weight: bold; /* Make the text stand out */
+}
+
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    transition: all 0.3s ease;
+}
+
+.nav-links li {
+    position: relative;
+    margin-left: 20px;
+}
+
+.nav-links a {
+    color: black; /* Link color */
+    text-decoration: none;
+    padding: 5px 10px; /* Increased padding for better spacing */
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #ffcc00; /* Change hover color */
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    height: 2px;
+    width: 100%;
+    background: #ffcc00; /* Underline color */
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    transform: scaleX(1);
+}
+
+.hamburger {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: black; /* Hamburger icon color */
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #fff; /* White background for the footer */
+    color: #000; /* Text color for footer */
+    margin-top: auto; /* Ensures footer is sticky at the bottom */
+}
+
+.social-icons {
+    margin-top: 10px; /* Space between text and icons */
+}
+
+.social-icons a {
+    color: black; /* Icon color */
+    margin: 0 10px; /* Space between icons */
+    font-size: 16px; /* Reduced icon size */
+    transition: color 0.3s ease;
+    text-decoration: none; /* Remove the dash */
+}
+
+.social-icons a:hover {
+    color: #ffcc00; /* Change icon color on hover */
+}
+
+
+.social-icons {
+    margin-top: 10px; /* Space between text and icons */
+    position: relative;
+    z-index: 10; /* Ensure links are on top */
+}
+
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 95px;
+        left: 0; /* Aligns the menu to the left */
+        right: 0; /* Full width */
+        background: #fff; /* White background for dropdown */
+        width: 100%; /* Full width */
+        padding: 10px 0; /* Padding for better spacing */
+    }
+
+    .nav-links li {
+        margin: 10px 0; /* Space between links */
+        text-align: center; /* Center text */
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: block;
+        color: black; /* Hamburger button color */
+    }
+}
+
+
+.donation-container {
+    position: relative; /* Allows absolute positioning of children */
+    text-align: center; /* Center-align text */
+}
+
+.donation {
+    position: absolute; /* Position the donation section absolutely */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust to center */
+    padding: 20px; /* Add padding for button spacing */
+    opacity: 0; /* Start with hidden text */
+    font-size: 2rem; /* Make the text larger */
+    color: #fff; /* Text color changed to white */
+    text-align: center; /* Center-align text */
+    transition: opacity 1s ease; /* Smooth transition for opacity */
+}
+
+.donate-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: 2px solid #000; /* Black border */
+    background-color: white; /* White background */
+    color: #000; /* Text color */
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+    border-radius: 5px; /* Rounded corners */
+    margin-top: 20px; /* Space between text and button */
+}
+
+.donate-button:hover {
+    background-color: transparent; /* Transparent background on hover */
+    color: #000; /* Change text color on hover */
+}
+
+
+.partner-column {
+            display: flex;
+            flex-direction: column; /* Stack items vertically */
+            align-items: center; /* Center-align items */
+            background-color:; /* Background color for the column */
+            padding: 20px;
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            margin: 22px; /* Margin around the column */
+        }
+
+        .partner-item {
+            display: flex;
+            align-items: center; /* Center items vertically */
+            margin: 15px 0; /* Space between items */
+            opacity: 0; /* Start invisible for animation */
+            transform: translateY(20px); /* Start slightly below */
+            transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
+        }
+
+        .partner-item i {
+            font-size: 24px; /* Icon size */
+            margin-right: 10px; /* Space between icon and text */
+            color: #4CAF50; /* Icon color */
+        }
+
+        .partner-item span {
+            font-size: 18px; /* Text size */
+            color: #333; /* Text color */
+        }
+
+        /* Animation to show items */
+        .partner-item.show {
+            opacity: 1; /* Make visible */
+            transform: translateY(0); /* Move to original position */
+        }
+
+        .partner-item {
+    opacity: 0; /* Start invisible */
+    transform: translateY(20px); /* Start slightly below */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
+}
+
+.partner-item.show {
+    opacity: 1; /* Make visible */
+    transform: translateY(0); /* Move to original position */
+}
+
+.support-column {
+    background-color: white; /* White column background */
+    padding: 20px; /* Space inside the column */
+    margin: 12px 0; /* Space above and below the column */
+    text-align: left; /* Center align text */
+    line-height: 1.6;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow for depth */
+        font-size: 14px; /* Adjust based on preference */
+  font-family: 'Roboto', sans-serif;
+}
+
+.support-column h2{
+    text-align: center;
+    font-size: 24px; /* Sets a larger font size */
+}
+}
+
+.support-column p {
+    font-size: 14px; /* Adjust based on preference */
+  font-family: 'Roboto', sans-serif;
+
+}
+
+
+
+.animated-image {
+    width: 100%; /* Adjust size as needed */
+    height: auto; /* Maintain aspect ratio */
+    opacity: 0; /* Start hidden */
+    transform: translateY(20px); /* Start slightly below */
+    transition: opacity 0.6s ease, transform 0.6s ease; /* Animation effect */
+    visibility: hidden; /* Keep the image hidden */
+    margin-top:1%;
+}
+.show {
+    opacity: 1; /* Fully visible */
+    transform: translateY(0); /* Move to original position */
+    visibility: visible; /* Ensure the image is visible */
+}
+
+
+
+
+
+.button-container {
+    display: flex;
+    justify-content: space-between; /* Space between buttons */
+    padding: 20px; /* Padding around the container */
+    position: fixed; /* Fixed positioning */
+    bottom: 20px; /* Distance from the bottom */
+    left: 0;
+    right: 0;
+}
+
+.action-button {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    border: none; /* Remove border */
+    padding: 15px 20px; /* Padding */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Font size */
+    display: flex; /* Flexbox for icon and text */
+    align-items: center; /* Center vertically */
+}
+
+.action-button i {
+    margin-right: 8px; /* Space between icon and text */
+}
+
+/* Change color on hover */
+.action-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+
+.team-section {
+    text-align: center;
+    padding: 50px 0;
+    background-color: white;
+    margin-bottom: 2%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow for depth */
+
+}
+
+.team-section h2 {
+    font-size: 24px;
+    margin-bottom: 40px;
+}
+
+.team-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.team-member {
+    flex: 1;
+    max-width: 300px;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.team-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.team-member h3 {
+    font-size: 24px;
+}
+
+/* Visible state */
+.team-member.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+
+
+.staff-section {
+    padding: 20px;
+}
+
+
+.staff-section h2{
+    text-align: center;
+    margin-bottom: 20px;
+font-size: 24px; /* Sets a larger font size */
+}
+}
+
+
+.staff-container {
+    display: flex;
+    flex-direction: column; /* Stack staff members vertically */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow for the entire container */
+    padding: 20px; /* Add padding inside the container */
+    background-color: #fff; /* Set background color for the entire container */
+    border-radius: 10px; /* Optional: rounded corners */
+
+}
+
+.staff-container > div {
+    display: flex; /* Align items horizontally */
+    align-items: center; /* Vertically center the content */
+    margin-bottom: 20px; /* Adds spacing between sections */
+    padding: 20px; /* Add padding inside each container */
+    background-color: #fff; /* Set background color for container */
+    border-radius: 8px; /* Optional: rounded corners */
+}
+
+.staff-image {
+    width: 100px; /* Adjust image size */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 20px; /* Space between image and text */
+    transition: transform 0.3s ease-in-out; /* Smooth hover effect */
+}
+
+.staff-image:hover {
+    transform: scale(1.1); /* Slightly scale up the image when hovered */
+}
+
+.staff-info {
+    display: flex;
+    flex-direction: column; /* Stack text vertically */
+}
+
+.personality-description {
+    font-size: 14px;
+    margin-top: 5px;
+    max-width: 100%; /* Controls width of description text */
+    line-height: 1.6;
+  font-family: 'Roboto', sans-serif;
+}
+
+
+.more-container {
+    background-color: white;
+    padding: 25px;
+    border-radius: 8px;
+    margin: 20px 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center; /* Center the text */
+    font-size: 14px;
+
+}
+
+.more-container h2 {
+    margin-bottom: 20px;
+}
+
+.more-container div {
+    margin-bottom: 15px;
+}
+
+.more-container h3 {
+    margin-bottom: 10px;
+    font-size: 24px; /* Adjust based on preference */
+  font-family: 'Roboto', sans-serif;
+}
+
+.more-container p,
+.more-container ul {
+    line-height: 1.6;
+    padding: 1%;
+    text-align: left;
+    font-size: 14px; /* Adjust based on preference */
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Style for icons */
+.more-container h3 i {
+    margin-right: 8px; /* Space between icon and text */
+    color: #007BFF; /* Change color to suit your theme */
+}
+
+@media (max-width: 480px) {
+    .donation h2 {
+        font-size: 30px; /* Smaller font size for mobile */
+        margin-top: -100%;
+    }
+
+    .team-container{
+        margin: 3%;
+    }
+
+
+    .team-container  h3 {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 540px) {
+    .donation h2 {
+        font-size: 20px; /* Smaller font size for mobile */
+        margin-top: -70%;
+    }
+
+    .team-container{
+        margin: 3%;
+    }
+}
+
+
+
+@media (min-width: 344px) and (max-width: 375px) {
+    .donation h2 {
+        font-size: 30px; /* Smaller font size for mobile */
+    }
+
+
+    .donate-button {
+    }
+
+    .staff-container{
+        display: none;
+    }
+
+    .staff-section{
+        display: none;
+    }
+
+    .team-container  h3 {
+        font-size: 14px;
+    }
+    .team-container{
+        margin: 3%;
+    }
+}
